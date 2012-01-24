@@ -12,7 +12,8 @@ _Instructions for generating the pem file is based off http://www.raywenderlich.
 
 Open Keychain Access on your Mac (it is in Applications/Utilities) and choose the menu option **Request a Certificate from a Certificate Authority…**.
 
-![Requesting a certificate with Keychain Access](images/Keychain-Access-1-Request-Certificate-500x200.jpg)
+
+![Requesting a certificate with Keychain Access](raw/master/images/Keychain-Access-1-Request-Certificate-500x200.jpg)
 
 If you do not have this menu option or it says “Request a Certificate from a Certificate Authority with key”, then download and install the WWDR Intermediate Certificate first. Also make sure no private key is selected in the main Keychain Access window.
 
