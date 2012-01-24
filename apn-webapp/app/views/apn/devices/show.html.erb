@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Token:</b>
+  <%= @apn_device.token %>
+</p>
+
+<p>
+  <b>Created at:</b>
+  <%= @apn_device.created_at %>
+</p>
+
+<p>
+  <b>Updated at:</b>
+  <%= @apn_device.updated_at %>
+</p>
+
+<%= link_to 'Edit', edit_apn_device_path(@apn_device) %> |
+<%= link_to 'Back', apn_devices_path %>

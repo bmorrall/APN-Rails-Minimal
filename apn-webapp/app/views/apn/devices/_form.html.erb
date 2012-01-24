@@ -1,0 +1,21 @@
+<%= form_for(@apn_device) do |f| %>
+  <% if @apn_device.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@apn_device.errors.count, "error") %> prohibited this apn_device from being saved:</h2>
+
+      <ul>
+      <% @apn_device.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :token %><br />
+    <%= f.text_field :token %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

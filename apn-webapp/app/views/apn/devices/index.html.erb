@@ -1,0 +1,23 @@
+<h1>Listing apn_devices</h1>
+
+<table>
+  <tr>
+    <th>Token</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @apn_devices.each do |apn_device| %>
+  <tr>
+    <td><%= apn_device.token %></td>
+    <td><%= link_to 'Show', apn_device %></td>
+    <td><%= link_to 'Edit', edit_apn_device_path(apn_device) %></td>
+    <td><%= link_to 'Destroy', apn_device, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Device', new_apn_device_path %>
