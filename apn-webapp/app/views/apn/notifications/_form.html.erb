@@ -11,23 +11,33 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :device_id %><br />
-    <%= f.collection_select(:device_id, APN::Device.all, :id, :token) %>
+  <div class="clearfix">
+    <%= f.label :device_id %>
+    <div class="input">
+      <%= f.collection_select(:device_id, APN::Device.all, :id, :token) %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :sound %><br />
-    <%= f.text_field :sound %>
+  <div class="clearfix">
+    <%= f.label :sound %>
+    <div class="input">
+      <%= f.text_field :sound %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :alert %><br />
-    <%= f.text_field :alert %>
+  <div class="clearfix">
+    <%= f.label :alert %>
+    <div class="input">
+      <%= f.text_field :alert %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :badge %><br />
-    <%= f.text_field :badge %>
+  <div class="clearfix">
+    <%= f.label :badge %>
+    <div class="input">
+      <%= f.text_field :badge %>
+    </div>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn primary" %>
+    <% unless @apn_notification.new_record? %><%= link_to 'Show', @apn_notification, class: "btn info" %><% end %>
+    <%= link_to 'Back', apn_notifications_path %>
   </div>
 <% end %>

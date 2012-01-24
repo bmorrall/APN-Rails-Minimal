@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<% if notice %><div class="alert-message success"><p><%= notice %></p></div><% end %>
 
 <p>
   <b>Token:</b>
@@ -15,5 +15,5 @@
   <%= @apn_device.updated_at %>
 </p>
 
-<%= link_to 'Edit', edit_apn_device_path(@apn_device) %> |
+<%= link_to 'Edit', edit_apn_device_path(@apn_device), class: :btn %>
 <%= link_to 'Back', apn_devices_path %>

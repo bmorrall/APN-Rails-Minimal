@@ -1,31 +1,30 @@
-<h1>Listing apn_notifications</h1>
+<div class="page-header">
+  <h1>Listing apn_notifications</h1>
+</div>
 
 <table>
   <tr>
-    <th>Device</th>
-    <th>Sound</th>
     <th>Alert</th>
-    <th>Badge</th>
     <th>Sent at</th>
-    <th></th>
-    <th></th>
     <th></th>
   </tr>
 
 <% @apn_notifications.each do |apn_notification| %>
   <tr>
-    <td><%= apn_notification.device.token %></td>
-    <td><%= apn_notification.sound %></td>
-    <td><%= apn_notification.alert %></td>
-    <td><%= apn_notification.badge %></td>
+    <td>
+      <%= apn_notification.alert %> <% if apn_notification.badge %><span class="label important"><%= apn_notification.badge %></span><% end %><br/>
+      <%= link_to apn_notification.device.token, apn_notification.device %>
+    </td>
     <td><%= apn_notification.sent_at %></td>
-    <td><%= link_to 'Show', apn_notification %></td>
-    <td><%= link_to 'Edit', edit_apn_notification_path(apn_notification) %></td>
-    <td><%= link_to 'Destroy', apn_notification, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td>
+      <%= link_to 'Show', apn_notification, {class: "btn info"} %>
+      <%= link_to 'Edit', edit_apn_notification_path(apn_notification), {class: :btn} %>
+      <%= link_to 'Destroy', apn_notification, :confirm => 'Are you sure?', :method => :delete %>
+    </td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Notification', new_apn_notification_path %>
+<%= link_to 'New Notification', new_apn_notification_path, class: "btn large primary" %>

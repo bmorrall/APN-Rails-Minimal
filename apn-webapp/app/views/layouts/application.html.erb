@@ -2,13 +2,18 @@
 <html>
 <head>
   <title>ApnWebapp</title>
+  <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
   <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 </head>
 <body>
 
+<div class="container">
+  <div class="content">
 <%= yield %>
+  </div>
+</div>
 
+<%= javascript_include_tag :defaults %>
 </body>
 </html>

@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<% if notice %><div class="alert-message success"><p><%= notice %></p></div><% end %>
 
 <p>
   <b>Device:</b>
@@ -51,5 +51,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_apn_notification_path(@apn_notification) %> |
+<%= link_to 'Edit', edit_apn_notification_path(@apn_notification), class: :btn %>
 <%= link_to 'Back', apn_notifications_path %>

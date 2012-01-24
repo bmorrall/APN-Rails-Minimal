@@ -11,11 +11,15 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :token %><br />
-    <%= f.text_field :token %>
+  <div class="clearfix">
+    <%= f.label :token %>
+    <div class="input">
+      <%= f.text_field :token, :class => "xxlarge" %>
+    </div>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn primary" %>
+    <% unless @apn_device.new_record? %><%= link_to 'Show', @apn_device, class: "btn info" %><% end %>
+    <%= link_to 'Back', apn_devices_path %>
   </div>
 <% end %>
