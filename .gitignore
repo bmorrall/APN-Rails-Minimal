@@ -1,6 +1,7 @@
 .bundle
-db/*.sqlite3
-log/*.log
-tmp/
+apn-webapp/config/apple_push_notification_development.pem
+apn-webapp/db/*.sqlite3
+apn-webapp/log/*.log
+apn-webapp/tmp/
 *.xcuserdatad
 .DS_Store
