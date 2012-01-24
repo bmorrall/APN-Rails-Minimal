@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController {
+    UITextView *textView;
+}
+
+@property(retain) IBOutlet UITextView *textView;
+
+- (void)notificationReceived:(NSNotification*)notification;
 
 @end

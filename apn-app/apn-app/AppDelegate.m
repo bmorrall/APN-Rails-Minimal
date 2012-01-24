@@ -16,8 +16,7 @@
 {
     // Let the device know we want to receive push notifications
     NSLog(@"Registering for Push Notifications");
-	[[UIApplication sharedApplication] registerForRemoteNotificationTypes:
-     (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+	[[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
 
     if (launchOptions != nil)
 	{
@@ -25,6 +24,7 @@
 		if (dictionary != nil)
 		{
 			NSLog(@"Launched from push notification: %@", dictionary);
+            [self pushNotificationReceived:dictionary];
 		}
 	}
     return YES;
@@ -76,6 +76,8 @@
 - (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
 {
 	NSLog(@"My token is: %@", deviceToken);
+    NSDictionary *dictionary = [NSDictionary dictionaryWithObject:[deviceToken description] forKey:@"token"];
+    [self pushNotificationReceived:dictionary];
 }
 
 - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
@@ -86,6 +88,12 @@
 - (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)notification
 {
 	NSLog(@"Received notification: %@", notification);
+    [self pushNotificationReceived:notification];
+}
+
+-(void) pushNotificationReceived:(NSDictionary*)dictionary
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"APN_Push_Notification" object:NULL userInfo:dictionary];
 }
 
 @end

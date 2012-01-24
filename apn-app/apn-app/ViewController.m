@@ -10,6 +10,8 @@
 
 @implementation ViewController
 
+@synthesize textView;
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -34,6 +36,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationReceived:) name:@"APN_Push_Notification" object:NULL];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -44,6 +47,7 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
 	[super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"APN_Push_Notification" object:NULL];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -59,6 +63,16 @@
     } else {
         return YES;
     }
+}
+
+- (void)notificationReceived:(NSNotification*)notification
+{
+    NSDictionary *userInfo = [notification userInfo];
+    if (userInfo != nil) {
+        NSString *userInfoString = [userInfo description];
+        textView.text = userInfoString;
+    }
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
 }
 
 @end
