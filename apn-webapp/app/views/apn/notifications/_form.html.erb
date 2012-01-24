@@ -1,0 +1,37 @@
+<%= form_for(@apn_notification) do |f| %>
+  <% if @apn_notification.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@apn_notification.errors.count, "error") %> prohibited this apn_notification from being saved:</h2>
+
+      <ul>
+      <% @apn_notification.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :device_id %><br />
+    <%= f.collection_select(:device_id, APN::Device.all, :id, :token) %>
+  </div>
+  <div class="field">
+    <%= f.label :sound %><br />
+    <%= f.text_field :sound %>
+  </div>
+  <div class="field">
+    <%= f.label :alert %><br />
+    <%= f.text_field :alert %>
+  </div>
+  <div class="field">
+    <%= f.label :badge %><br />
+    <%= f.text_field :badge %>
+  </div>
+  <div class="field">
+    <%= f.label :custom_properties %><br />
+    <%= f.text_area :custom_properties %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

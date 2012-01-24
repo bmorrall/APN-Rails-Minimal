@@ -1,0 +1,2 @@
+module Apn::NotificationsHelper
+end

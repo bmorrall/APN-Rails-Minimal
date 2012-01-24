@@ -1,7 +1,10 @@
 ApnWebapp::Application.routes.draw do
   namespace :apn do
     resources :devices
+    resources :notifications
   end
+
+  root :to => "apn/notifications#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
