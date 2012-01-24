@@ -2,7 +2,7 @@
 
 <p>
   <b>Device:</b>
-  <%= @apn_notification.device_id %>
+  <%= link_to @apn_notification.device.token, @apn_notification.device %>
 </p>
 
 <p>
