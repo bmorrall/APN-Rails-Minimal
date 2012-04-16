@@ -1,4 +1,4 @@
-# APN Testing Suite
+ # APN Testing Suite
 
 This contains a basic XCode iOS App that receives Apple Push Notifications and a simple Rails app that allows you to create and send push notifications to the iOS app.
 
@@ -13,13 +13,13 @@ _Instructions for generating the pem file is based off http://www.raywenderlich.
 Open Keychain Access on your Mac (it is in Applications/Utilities) and choose the menu option **Request a Certificate from a Certificate Authority…**.
 
 
-![Requesting a certificate with Keychain Access](/bmorrall/APN-Minimal/raw/master/images/Keychain-Access-1-Request-Certificate-500x200.jpg)
+![Requesting a certificate with Keychain Access](/bmorrall/APN-Rails-Minimal/raw/master/images/Keychain-Access-1-Request-Certificate-500x200.jpg)
 
 If you do not have this menu option or it says “Request a Certificate from a Certificate Authority with key”, then download and install the WWDR Intermediate Certificate first. Also make sure no private key is selected in the main Keychain Access window.
 
 You should now see the following window:
 
-![Generating a certificate sign request with Keychain Access](/bmorrall/APN-Minimal/raw/master/images/Keychain-Access-2-Generate-CSR-500x370.jpg)
+![Generating a certificate sign request with Keychain Access](/bmorrall/APN-Rails-Minimal/raw/master/images/Keychain-Access-2-Generate-CSR-500x370.jpg)
 
 Enter your email address here. I’ve heard people recommended you use the same email address that you used to sign up for the iOS Developer Program, but it seems to accept any email address just fine.
 
@@ -30,7 +30,7 @@ Check **Saved to disk** and click **Continue**. Save the file as “APNTest.cert
 If you go to the Keys section of Keychain Access, you will see that a new private key has appeared 
 in your keychain. Right click it and choose Export.
 
-![Exporting your private key with keychain access](/bmorrall/APN-Minimal/raw/master/images/Keychain-Access-3-Export-Private-Key-500x279.jpg)
+![Exporting your private key with keychain access](/bmorrall/APN-Rails-Minimal/raw/master/images/Keychain-Access-3-Export-Private-Key-500x279.jpg)
 
 Save the private key as “APNTestKey.p12” and enter a passphrase.
 
@@ -44,7 +44,7 @@ First, we are going to make a new App ID. Each push app needs its own unique ID 
 
 Go to **App IDs** in the sidebar and click the **New App ID** button.
 
-![Creating a new App ID](/bmorrall/APN-Minimal/raw/master/images/Provisioning-1-New-AppID-500x389.jpg)
+![Creating a new App ID](/bmorrall/APN-Rails-Minimal/raw/master/images/Provisioning-1-New-AppID-500x389.jpg)
 
 I filled in the fields as follows:
 
@@ -58,27 +58,27 @@ In a few moments, we will generate the SSL certificate that your push server use
 
 After you have made the App ID, it shows up like this in the list:
 
-![List of App IDs in the iOS Provisioning Portal](/bmorrall/APN-Minimal/raw/master/images/Provisioning-2-List-of-AppIDs-500x50.jpg)
+![List of App IDs in the iOS Provisioning Portal](/bmorrall/APN-Rails-Minimal/raw/master/images/Provisioning-2-List-of-AppIDs-500x50.jpg)
 
 In the “Apple Push Notification service” column, there are two orange lights that say “Configurable for Development” and “Configurable for Production”. This means our App ID can be used with push, but we still need to set this up. Click on the **Configure** link to open the Configure App ID screen.
 
-![Configuring your App ID in the iOS Provisioning Portal](/bmorrall/APN-Minimal/raw/master/images/Provisioning-3-Configure-AppID-500x350.jpg)
+![Configuring your App ID in the iOS Provisioning Portal](/bmorrall/APN-Rails-Minimal/raw/master/images/Provisioning-3-Configure-AppID-500x350.jpg)
 
 Check the **Enable for Apple Push Notification service** box and click on the **Configure** button for the Development Push SSL Certificate. The “Apple Push Notification service SSL Certificate Assistant” pops up:
 
-![Uploading your CSR with the SSL Assistant](/bmorrall/APN-Minimal/raw/master/images/SSL-Assistant-1-Upload-CSR-500x453.jpg)
+![Uploading your CSR with the SSL Assistant](/bmorrall/APN-Rails-Minimal/raw/master/images/SSL-Assistant-1-Upload-CSR-500x453.jpg)
 
 The first thing it asks you is to generate a Certificate Signing Request. We already did that, so click **Continue**. In the next step you upload the CSR. Choose the CSR file that you generated earlier and click **Generate**.
 
-![Generating a Certificate with the SSL Assistant](/bmorrall/APN-Minimal/raw/master/images/SSL-Assistant-2-Generating-Certificate-500x456.jpg)
+![Generating a Certificate with the SSL Assistant](/bmorrall/APN-Rails-Minimal/raw/master/images/SSL-Assistant-2-Generating-Certificate-500x456.jpg)
 
 It takes a few seconds to generate the SSL certificate. Click **Continue** when it’s done.
 
-![Downloading a certificate with the SSL assistant](/bmorrall/APN-Minimal/raw/master/images/SSL-Assistant-3-Download-Certificate-500x455.jpg)
+![Downloading a certificate with the SSL assistant](/bmorrall/APN-Rails-Minimal/raw/master/images/SSL-Assistant-3-Download-Certificate-500x455.jpg)
 
 Now click **Download** to get the certificate – it is named “aps_developer_identity.cer”. Click **Done** to close the assistant and return to the Configure App ID screen.
 
-![Screenshot after the SSL Assistant is Complete](/bmorrall/APN-Minimal/raw/master/images/Provisioning-4-After-SSL-Assistant-500x111.jpg)
+![Screenshot after the SSL Assistant is Complete](/bmorrall/APN-Rails-Minimal/raw/master/images/Provisioning-4-After-SSL-Assistant-500x111.jpg)
 
 As you can see, we have a valid certificate and push is now available for development. You can download the certificate again here if necessary. The development certificate is only valid for 3 months.
 
@@ -152,7 +152,7 @@ If the connection is successful, you should be able to type a few characters. Wh
 
 We’re not done yet in the Provisioning Portal. Go to Provisioning in the sidebar and click **New Profile**.
 
-![Creating a Provisioning Profile in the iOS Provisioning Portal](/bmorrall/APN-Minimal/raw/master/images/Provisioning-5-Create-Profile-500x293.jpg)
+![Creating a Provisioning Profile in the iOS Provisioning Portal](/bmorrall/APN-Rails-Minimal/raw/master/images/Provisioning-5-Create-Profile-500x293.jpg)
 
 This is how I filled in the fields:
 
